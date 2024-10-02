@@ -1,0 +1,25 @@
+.Contact {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.contactHeader {
+  background-color: var(--bg-contact-header);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 2rem;
+}
+
+.pha {
+  background-color: white;
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+}
+
+.wrapperContact {
+  /* border: 2px solid red; */
+  text-align: center;
+}

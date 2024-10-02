@@ -1,0 +1,43 @@
+.carrouselContainer {
+  height: 80%;
+  border: 2px solid var(--debug-pink);
+}
+
+.carrouselSlides {
+  /* border: 5px solid red; */
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  transition: transform 0.3s ease-out;
+}
+
+.carrouselSlide {
+  /* border: 2px solid yellow; */
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 20% 20% 20% 20% 20%;
+  height: 100%;
+  min-width: 100%;
+}
+
+.navigation {
+  padding: 0.3rem;
+  /* border: 2px solid rgb(46, 59, 228); */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+}
+
+.navigation span {
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  height: 8px;
+  width: 8px;
+  transition: 0.3s ease;
+}
+
+.navigation span.active {
+  background-color: white;
+}

@@ -1,0 +1,129 @@
+.Cellphone {
+  padding: 0;
+  background-color: transparent;
+  border-radius: 0;
+
+  animation: vibrate 0.3s 3;
+  /* infinite */
+}
+
+@keyframes vibrate {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
+}
+
+.App {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--bg-os);
+  display: flex;
+  flex-direction: column;
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.topPart {
+  padding: 0.5rem 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border: 2px solid var(--debug-red);
+}
+
+.application {
+  /* width: 100%; */
+  padding: 1rem;
+  height: 100%;
+
+  display: grid;
+  place-content: center;
+  position: relative;
+
+  color: var(--main-text);
+
+  animation: teste 0.1s forwards;
+}
+
+.applicationF {
+  /* width: 100%; */
+  padding: 1rem;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  color: var(--main-text);
+
+  animation: teste 0.1s forwards;
+}
+
+.actionBtns {
+  padding: 0.5rem 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+
+  border: 2px solid var(--debug-red);
+}
+
+@keyframes teste {
+  0% {
+    transform: scale(0%);
+  }
+  100% {
+    transform: scale(100%);
+  }
+}
+
+@media (min-width: 600px) {
+  .Cellphone {
+    padding: 1rem;
+    background-color: rgb(248, 138, 230);
+    border-radius: 1rem;
+  }
+
+  .App {
+    width: 393px;
+    height: 852px;
+  }
+}

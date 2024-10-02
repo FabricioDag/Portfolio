@@ -1,0 +1,62 @@
+.notification {
+  background-color: rgba(255, 255, 255, 0.493);
+  color: rgb(0, 0, 0);
+
+  padding: 1rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 0.3rem;
+  opacity: 0.9;
+  transition: transform 0.3s ease-in-out;
+
+  height: 100%;
+}
+
+.notification p {
+  font-size: 0.75rem;
+  text-align: justify;
+}
+
+.notification small {
+  font-size: 0.6rem;
+  text-align: end;
+}
+
+.notificationBtn {
+  padding: 0.2rem;
+  border-radius: 0.8rem;
+  border: none;
+  background-color: white;
+  cursor: pointer;
+}
+
+.notification.pop {
+  animation: pop 0.5s forwards;
+}
+
+.notification.fadeOut {
+  animation: fadeOut 0.3s forwards;
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0%);
+  }
+  60% {
+    transform: scale(105%);
+  }
+  100% {
+    transform: scale(100%);
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

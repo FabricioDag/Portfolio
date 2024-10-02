@@ -1,0 +1,64 @@
+.home {
+  border: 5px solid var(--debug-green);
+  display: flex;
+  flex-direction: column;
+
+  /* background-image: url(./bgHome.jpeg);
+  background-position: center;
+  background-size: cover; */
+
+  max-width: 600px;
+  overflow: hidden;
+  position: relative;
+}
+
+.pages {
+  /* border: 5px solid var(--teste); */
+  height: 80%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  /* gap: 1rem; */
+  /* width: 300%; */
+}
+
+.weatherContainer {
+  border: 2px solid var(--debug-pink);
+  display: grid;
+  place-content: center;
+  padding: 1rem;
+}
+
+.clockContainer {
+  border: 2px solid var(--debug-pink);
+  display: grid;
+  place-content: center;
+  padding: 1rem;
+}
+
+.notificationContainer {
+  border: 2px solid var(--debug-red);
+  padding: 1rem;
+}
+
+.fixed {
+  /* border: 5px solid yellow; */
+  height: 20%;
+  display: flex;
+  flex-direction: column;
+}
+
+.fixedApps {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  height: 100%;
+  /* gap: 1rem; */
+  background-color: #4a1fc04d;
+  border-radius: 0.5rem;
+}
+
+/* --------------------- icones app component deprecated -------------- */
+.appIcon .icon {
+  color: var(--app-icon);
+  height: 60%;
+}

@@ -1,0 +1,32 @@
+.phVideo {
+  width: 100%;
+  height: 250px;
+  background-color: black;
+}
+
+.textArea {
+  padding: 1rem;
+}
+
+.carouselSlides {
+  display: flex;
+  transition: transform 0.3s ease-out;
+}
+
+.carouselSlide {
+  min-width: 100%;
+  height: 300px;
+  background-color: lightgray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  user-select: none;
+}
+
+.carouselContainer {
+  width: 100%;
+  max-width: 600px;
+  overflow: hidden;
+  position: relative;
+}
