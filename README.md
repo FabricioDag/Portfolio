@@ -1,7 +1,7 @@
-Portfolio
+    Portfolio
 
 A desenvolver:
-- 1 Relógio Estético
+- Tornar Links nao draggable
 - 2 Calculadora Funcional e Estética
 - 3 Icones Apps
 - 4 Icone Botão Home 

@@ -215,7 +215,7 @@ const Home = ({ setOpenedApp }) => {
           </div>
 
           <div className="carrouselSlide">
-            <div className="pageTitlePh h1 w3">{t('competencies')}</div>
+            <div className="pageTitlePh h1 w3">{t('projects')}</div>
 
             <div
               className="appWrapper"
@@ -227,36 +227,97 @@ const Home = ({ setOpenedApp }) => {
 
             <div className="appWrapper">
               <div className="appIcon"></div>
+              <p className="appTitle">To Do List</p>
+            </div>
+
+            <div className="appWrapper">
+              <div className="appIcon"></div>
+              <p className="appTitle">RPS</p>
+            </div>
+
+            <div className="appWrapper">
+              <div className="appIcon"></div>
+              <p className="appTitle">Pomodoro</p>
+            </div>
+
+            <div className="appWrapper">
+              <div className="appIcon"></div>
+              <p className="appTitle">Loteria</p>
+            </div>
+
+            <div className="appWrapper">
+              <div className="appIcon"></div>
+              <p className="appTitle">DagSketch</p>
+            </div>
+
+            <div className="appWrapper">
+              <div className="appIcon"></div>
+              <p className="appTitle">CodeKingdom</p>
+            </div>
+            
+            <div className="appWrapper" onClick={() => handleClick('Project')}>
+              <div className="appIcon"></div>
+              <p className="appTitle">Project</p>
+            </div>
+            
+          </div>
+
+          <div className="carrouselSlide">
+            <div className="pageTitlePh h1 w3">{t('competencies')}</div>
+
+            <div className="appWrapper">
+              <div className="appIcon"></div>
+              <p className="appTitle">React</p>
+            </div>
+
+            <div className="appWrapper">
+              <div className="appIcon"></div>
+              <p className="appTitle">Angular</p>
+            </div>
+
+            <div className="appWrapper">
+              <div className="appIcon"></div>
+              <p className="appTitle">NodeJS</p>
+            </div>
+
+            <div className="appWrapper">
+              <div className="appIcon"></div>
               <p className="appTitle">Javascript</p>
             </div>
 
             <div className="appWrapper">
               <div className="appIcon"></div>
-              <p className="appTitle">Vue</p>
+              <p className="appTitle">Typescript</p>
+            </div>
+            
+            <div className="appWrapper">
+              <div className="appIcon"></div>
+              <p className="appTitle">Git</p>
             </div>
 
             <div className="appWrapper">
               <div className="appIcon"></div>
-              <p className="appTitle">CSS</p>
-            </div>
-          </div>
-
-          <div className="carrouselSlide">
-            <div className="pageTitlePh h1 w3">{t('projects')}</div>
-
-            <div className="appWrapper" onClick={() => handleClick('Project')}>
-              <div className="appIcon"></div>
-              <p className="appTitle">Project</p>
+              <p className="appTitle">Sass</p>
             </div>
 
-            <div className="appWrapper" onClick={() => handleClick('Project')}>
+            <div className="appWrapper">
               <div className="appIcon"></div>
-              <p className="appTitle">Project</p>
+              <p className="appTitle">MongoDB</p>
             </div>
 
-            <div className="appWrapper" onClick={() => handleClick('Project')}>
+            <div className="appWrapper">
               <div className="appIcon"></div>
-              <p className="appTitle">Project</p>
+              <p className="appTitle">Postgree</p>
+            </div>
+
+            <div className="appWrapper">
+              <div className="appIcon"></div>
+              <p className="appTitle">Python</p>
+            </div>
+
+            <div className="appWrapper">
+              <div className="appIcon"></div>
+              <p className="appTitle">Swift</p>
             </div>
           </div>
 
@@ -311,7 +372,7 @@ const Home = ({ setOpenedApp }) => {
             <p className="appTitle">{t('contact')}</p>
           </div>
 
-          <div className="appWrapper" onClick={() => handleClick('Settings')}>
+          <div className="appWrapper">
             <div className="appIcon">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -324,7 +385,7 @@ const Home = ({ setOpenedApp }) => {
                 />
               </svg>
             </div>
-            <p className="appTitle">{t('resumee')} Set</p>
+            <p className="appTitle">{t('resumee')}</p>
           </div>
         </div>
       </div>
