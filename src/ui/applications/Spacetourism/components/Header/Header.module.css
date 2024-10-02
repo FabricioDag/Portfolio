@@ -1,5 +1,5 @@
 .Header {
-  border: 2px solid red;
+  border: 2px solid var(--debug-red);
   padding: 1rem;
   display: flex;
   align-items: center;

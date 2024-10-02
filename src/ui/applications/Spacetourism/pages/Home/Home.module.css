@@ -1,5 +1,5 @@
 .Home {
-  border: 2px solid green;
+  border: 2px solid var(--debug-green);
   display: flex;
   flex-direction: column;
   align-items: center;
