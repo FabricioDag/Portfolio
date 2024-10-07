@@ -10,6 +10,7 @@
 
   display: flex;
   transition: transform 0.3s ease-out;
+  /* gap: 1rem;  quebra o trasnform*/ 
 }
 
 .carrouselSlide {

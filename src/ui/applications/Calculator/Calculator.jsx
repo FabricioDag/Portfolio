@@ -2,124 +2,97 @@ import './Calculator.css';
 import { useState } from 'react';
 
 const Calculator = () => {
-  const [actualNumber, setActualNumber] = useState('0');
-  const [lastNumber, setLastNumber] = useState('0');
-  const [selectedAction, setSelectedAction] = useState('+');
 
+  const [selectedAction, setSelectedAction] = useState('');
+
+  const [mainNumber, setMainNumber] = useState(0)
+
+  const [expressionNumberA, setExpressionNumberA] = useState()
+  const [expressionNumberB, setExpressionNumberB] = useState()
+
+  const [showEquals, setShowEquals] = useState(false)
+
+  const resetMainNumber = () =>{
+    setMainNumber(0)
+  }
+
+  // Click Number adiciona valor ao mainNumber
   const handleNumberClick = (value) => {
-    let newNumber = actualNumber + value;
-    setActualNumber(newNumber);
+    let newNumber = (mainNumber*10) + value;
+    setMainNumber(newNumber);
   };
 
-  const handleActionClick = (value) => {
-    setSelectedAction(value);
 
-    if ((lastNumber !== '0' && actualNumber !== 0) || selectedAction == '!') {
-      alert('ja tem numero no last number deveria fazer a ação');
-
-      //switch case verifiando qual value da action chamando a função correspondente
-      let newNumber = 0;
-      switch (value) {
-        case '+':
-          alert('clicou em somar');
-          newNumber = sum(parseFloat(lastNumber), parseFloat(actualNumber));
-          break;
-        case '-':
-          alert('clicou em subtrair');
-          newNumber = sub(parseFloat(lastNumber), parseFloat(actualNumber));
-          break;
-        case '*':
-          alert('clicou em multiplicar');
-          newNumber = mul(parseFloat(lastNumber), parseFloat(actualNumber));
-          break;
-        case '/':
-          alert('clicou em dividir');
-          newNumber = div(parseFloat(lastNumber), parseFloat(actualNumber));
-          break;
-        case '=':
-          alert('clicou em igual');
-          break;
-        case '!':
-          alert('factorial');
-          newNumber = fac(lastNumber);
-          break;
-        default:
-          alert('houve um erro');
-      }
-
-      setLastNumber(newNumber);
-      setActualNumber('0');
-    } else {
-      setLastNumber(actualNumber);
-      setActualNumber('0');
+  // click em Action 
+  // se expressionA vazio, expressionA = mainNumber
+  // seta ação
+  // reseta main number
+  const handleActionClick = (action) => {
+    if(!expressionNumberA){
+      setExpressionNumberA(mainNumber)
+      setSelectedAction(action)
+      resetMainNumber()
     }
-  };
-
-  const sum = (valueA, valueB) => {
-    return valueA + valueB;
-  };
-
-  const sub = (valueA, valueB) => {
-    return valueA - valueB;
-  };
-
-  const mul = (valueA, valueB) => {
-    return valueA * valueB;
-  };
-
-  const div = (valueA, valueB) => {
-    return valueA / valueB;
-  };
-
-  const fac = (valueA) => {
-    let aux = valueA;
-    for (let i = valueA; i > 1; i--) {
-      aux = aux * (i - 1);
+    // se expressionA nao ta vazio entao, expressionB = mainNumber
+    else{
+      setExpressionNumberA(mainNumber+expressionNumberA) // do calc
+      resetMainNumber()
     }
-    return aux;
+    
   };
+
+
+  const handleActionEquals = () =>{
+    alert('clickou equals')
+    if(expressionNumberA){
+      setExpressionNumberB(mainNumber)
+      setMainNumber(expressionNumberA+mainNumber)
+      setShowEquals(true)
+    }
+  }
+  
 
   return (
     <div className="Calculator application">
       <div className="calculusArea">
         <p className="teste">
-          {lastNumber} {selectedAction}
+          {expressionNumberA} {selectedAction} {expressionNumberB} {showEquals? '=': ''}
         </p>
-        <p className="numbers">{actualNumber}</p>
+        <p className="mainNumber">{mainNumber}</p>
       </div>
 
       <div className="calculatorInputsArea">
-        <div className="calculatorInput" onClick={() => handleNumberClick('7')}>
+        <div className="calculatorInput" onClick={() => handleNumberClick(7)}>
           7
         </div>
-        <div className="calculatorInput" onClick={() => handleNumberClick('8')}>
+        <div className="calculatorInput" onClick={() => handleNumberClick(8)}>
           8
         </div>
-        <div className="calculatorInput" onClick={() => handleNumberClick('9')}>
+        <div className="calculatorInput" onClick={() => handleNumberClick(9)}>
           9
         </div>
 
         <div className="calculatorInput del">DEL</div>
 
-        <div className="calculatorInput" onClick={() => handleNumberClick('4')}>
+        <div className="calculatorInput" onClick={() => handleNumberClick(4)}>
           4
         </div>
-        <div className="calculatorInput" onClick={() => handleNumberClick('5')}>
+        <div className="calculatorInput" onClick={() => handleNumberClick(5)}>
           5
         </div>
-        <div className="calculatorInput" onClick={() => handleNumberClick('6')}>
+        <div className="calculatorInput" onClick={() => handleNumberClick(6)}>
           6
         </div>
         <div className="calculatorInput" onClick={() => handleActionClick('-')}>
           -
         </div>
-        <div className="calculatorInput" onClick={() => handleNumberClick('1')}>
+        <div className="calculatorInput" onClick={() => handleNumberClick(1)}>
           1
         </div>
-        <div className="calculatorInput" onClick={() => handleNumberClick('2')}>
+        <div className="calculatorInput" onClick={() => handleNumberClick(2)}>
           2
         </div>
-        <div className="calculatorInput" onClick={() => handleNumberClick('3')}>
+        <div className="calculatorInput" onClick={() => handleNumberClick(3)}>
           3
         </div>
         <div className="calculatorInput" onClick={() => handleActionClick('+')}>
@@ -128,7 +101,7 @@ const Calculator = () => {
 
         <div className="calculatorInput">,</div>
 
-        <div className="calculatorInput" onClick={() => handleNumberClick('0')}>
+        <div className="calculatorInput" onClick={() => handleNumberClick(0)}>
           0
         </div>
         <div className="calculatorInput" onClick={() => handleActionClick('/')}>
@@ -143,7 +116,7 @@ const Calculator = () => {
           !
         </div>
         <div className="calculatorInput res">RES</div>
-        <div className="calculatorInput equals">=</div>
+        <div className="calculatorInput equals" onClick={()=>handleActionEquals()}>=</div>
       </div>
     </div>
   );
