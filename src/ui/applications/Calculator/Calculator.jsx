@@ -3,62 +3,90 @@ import { useState } from 'react';
 
 const Calculator = () => {
 
-  const [selectedAction, setSelectedAction] = useState('');
-
-  const [mainNumber, setMainNumber] = useState(0)
-
-  const [expressionNumberA, setExpressionNumberA] = useState()
-  const [expressionNumberB, setExpressionNumberB] = useState()
-
-  const [showEquals, setShowEquals] = useState(false)
+  const [mainNumber,setMainNumber] = useState(0)
+  const [operation, setOperation] = useState('')
+  const [lastNumber, setLastNumber] = useState()
 
   const resetMainNumber = () =>{
     setMainNumber(0)
   }
-
-  // Click Number adiciona valor ao mainNumber
-  const handleNumberClick = (value) => {
+  
+  const handleNumberClick = (value) =>{
     let newNumber = (mainNumber*10) + value;
     setMainNumber(newNumber);
-  };
+  }
 
-
-  // click em Action 
-  // se expressionA vazio, expressionA = mainNumber
-  // seta ação
-  // reseta main number
-  const handleActionClick = (action) => {
-    if(!expressionNumberA){
-      setExpressionNumberA(mainNumber)
-      setSelectedAction(action)
+  const handleActionClick =(operation) =>{
+    if(mainNumber!==0 && !lastNumber){
+      setLastNumber(mainNumber)
       resetMainNumber()
-    }
-    // se expressionA nao ta vazio entao, expressionB = mainNumber
-    else{
-      setExpressionNumberA(mainNumber+expressionNumberA) // do calc
+      setOperation(operation)
+    } else if(mainNumber!==0 && lastNumber){
+      setLastNumber(doCalc)
       resetMainNumber()
-    }
-    
-  };
-
-
-  const handleActionEquals = () =>{
-    alert('clickou equals')
-    if(expressionNumberA){
-      setExpressionNumberB(mainNumber)
-      setMainNumber(expressionNumberA+mainNumber)
-      setShowEquals(true)
+      setOperation(operation)
     }
   }
-  
+
+  const handleActionEquals = () =>{
+    setLastNumber(doCalc)
+    resetMainNumber()
+  }
+
+  const sum = (valueA, valueB) => {
+    return valueA + valueB;
+  };
+
+  const sub = (valueA, valueB) => {
+    return valueA - valueB;
+  };
+
+  const mul = (valueA, valueB) => {
+    return valueA * valueB;
+  };
+
+  const div = (valueA, valueB) => {
+    return valueA / valueB;
+  };
+
+  const fac = (valueA) => {
+    let aux = valueA;
+    for (let i = valueA; i > 1; i--) {
+      aux = aux * (i - 1);
+    }
+    return aux;
+  };
+
+  const doCalc = () =>{
+    let newNumber = 0
+    switch (operation) {
+      case '+':
+        newNumber = sum(parseFloat(lastNumber), parseFloat(mainNumber));
+        break;
+      case '-':
+        newNumber = sub(parseFloat(lastNumber), parseFloat(mainNumber));
+        break;
+      case '*':
+        newNumber = mul(parseFloat(lastNumber), parseFloat(mainNumber));
+        break;
+      case '/':
+        newNumber = div(parseFloat(lastNumber), parseFloat(mainNumber));
+        break;
+      case '!':
+        alert('factorial');
+        newNumber = fac(lastNumber);
+        break;
+      default:
+        alert('houve um erro');
+    }
+    return newNumber
+  }
 
   return (
     <div className="Calculator application">
       <div className="calculusArea">
-        <p className="teste">
-          {expressionNumberA} {selectedAction} {expressionNumberB} {showEquals? '=': ''}
-        </p>
-        <p className="mainNumber">{mainNumber}</p>
+        {/* <p className="expression">expressao</p> */}
+        <p className="mainNumber">{lastNumber} {operation} {mainNumber}  </p>
       </div>
 
       <div className="calculatorInputsArea">
@@ -115,7 +143,7 @@ const Calculator = () => {
         <div className="calculatorInput" onClick={() => handleActionClick('!')}>
           !
         </div>
-        <div className="calculatorInput res">RES</div>
+        <div className="calculatorInput res" onClick={() => resetAll()}>RES</div>
         <div className="calculatorInput equals" onClick={()=>handleActionEquals()}>=</div>
       </div>
     </div>
