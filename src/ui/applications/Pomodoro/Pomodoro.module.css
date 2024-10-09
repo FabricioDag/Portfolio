@@ -51,9 +51,9 @@
     font-size: .9rem;
   }
   
-  .actualTimer p:hover {
+  /* .actualTimer p:hover {
     background-color: rgba(255, 0, 0, 0.494);
-  }
+  } */
   
   p.actual {
     background-color: var(--main-red);
