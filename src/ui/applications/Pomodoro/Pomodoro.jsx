@@ -1,40 +1,69 @@
 import style from './Pomodoro.module.css'
-
 import { useState, useEffect } from 'react'
-
 const Pomodoro = () =>{
 
-    const [actualCountdown, setActualCountdown] = useState(20)
-    const [nextCountdown, setNextCountdown] = useState(5)
-    const [counterShortBreak , setCounterShortBreak] = useState(0)
+    const [workTime, setWorkTime] = useState(() => Number(localStorage.getItem('workTime')) || 1500);
+    const [shortBreakTime, setShortBreakTime] = useState(() => Number(localStorage.getItem('shortBreakTime')) || 300);
+    const [longBreakTime, setLongBreakTime] = useState(() => Number(localStorage.getItem('longBreakTime')) || 900);
+    const [cyclesBeforeLongBreak, setCyclesBeforeLongBreak] = useState(() => Number(localStorage.getItem('cyclesBeforeLongBreak')) || 4);
 
-    const [configurations ,setConfigurations] = useState(
-        {
-            pomodoro:20,
-            shortBreak:5,
-            longBreak:20,
-            toLongBreak:2
-        }
-    )
-
+    const [time, setTime] = useState(workTime);
     const [isTimerRunning, setIsTimerRunning] = useState(false)
+    const [cycleCount, setCycleCount] = useState(0);
 
-    const [minutes, setMinutes] = useState(20)
-    const [seconds, setSeconds] = useState(0)
+    const [currentTimer , setCurrentTimer] = useState('work')
 
-    const countdown = () =>{
-        if(isTimerRunning){
-            if(seconds== 0){
-                setMinutes(minutes-1)
-                setSeconds(59)
-            }else{
-                setSeconds(seconds-1)
-            }
+    // Função pega valor do localStorage
+
+    // Salvando as configurações no localStorage
+    useEffect(() => {
+        localStorage.setItem('workTime', workTime);
+        localStorage.setItem('shortBreakTime', shortBreakTime);
+        localStorage.setItem('longBreakTime', longBreakTime);
+        localStorage.setItem('cyclesBeforeLongBreak', cyclesBeforeLongBreak);
+    }, [workTime, shortBreakTime, longBreakTime, cyclesBeforeLongBreak]);
+
+    // Formatação do tempo
+    const formatTime = (seconds) => {
+        const minutes = Math.floor(seconds / 60);
+        const remainingSeconds = seconds % 60;
+        //return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
+        return `${minutes <10 ? '0'+minutes : minutes }:${remainingSeconds < 10 ? '0'+remainingSeconds: remainingSeconds}`;
+    };
+
+    // Reseta o timer
+    const resetTimer = () => {
+        setIsTimerRunning(false);
+        setTime(currentTimer == 'work'? workTime : currentTimer == 'shortBreak' ? shortBreakTime : longBreakTime)
+    };
+
+    // Controla o efeito do tempo
+    useEffect(() => {
+        let interval;
+        if (isTimerRunning && time > 0) {
+        interval = setInterval(() => {
+            setTime(time - 1);
+        }, 1);
+
+        // ciclo termina dps de um intervalo
+        } else if (time === 0) {
+        
+        //gerenciar qual o proximo timer
+        if (currentTimer !== 'work') {
+            setCycleCount((prev) => prev + 1); //counter ciclos ++
+            setCurrentTimer('work')
+        } 
+        else if (currentTimer == 'work' && cycleCount < cyclesBeforeLongBreak){
+            setCurrentTimer('shortBreak')
+        }
+        else {
+            setCurrentTimer('longBreak')
         }
         
-    }
-
-    setInterval(countdown, 1000);
+        resetTimer();
+        }
+        return () => clearInterval(interval);
+    }, [isTimerRunning, time, currentTimer, cycleCount, cyclesBeforeLongBreak, workTime, shortBreakTime, longBreakTime]);
 
     const handleClick = () =>{
         setIsTimerRunning(!isTimerRunning)
@@ -43,27 +72,29 @@ const Pomodoro = () =>{
     return(
         <div className={`${style.Pomodoro} application ` }>
 
-
             <div className={style.topPart}>
             <h3>Pomodoro</h3>
+            <p>currentTimer: {currentTimer}</p>
+            <p>currentCycle: {cycleCount}</p>
 
             <div className={style.actualTimer}>
-                <p className={style.actual}>Pomodoro</p>
-                <p>Short Break</p>
-                <p>Long Break</p>
+                <p className={`${currentTimer == 'work'}`}>Pomodoro</p>
+                <p className={`${currentTimer == 'shortBreak'? style.actual : ''}`}>Short Break</p>
+                <p className={`${currentTimer == 'longBreak'? style.actual : ''}`}>Long Break</p>
             </div>
             </div>
 
             <div className={style.timerWrapper} onClick={handleClick}>
                 <div className={style.circle}>
+
                     <div className={style.timer}>
-                        <h1 className={style.timerValue}>{minutes}:{seconds < 10 ? '0'+seconds : seconds}</h1>
+                        <h1 className={style.timerValue}>{formatTime(time)}</h1>
                         <p className={style.timerAction}>{isTimerRunning? 'PAUSE' : 'PLAY'}</p>
                     </div>
                 </div>
 
                 <div className={style.nextTimer}>
-                    <p>{nextCountdown}</p>
+                    <p>5</p>
                 </div>
             </div>
 
