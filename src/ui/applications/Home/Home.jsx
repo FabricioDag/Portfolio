@@ -160,6 +160,7 @@ const Home = ({ setOpenedApp }) => {
               <a
                 href="https://www.linkedin.com/in/fabr%C3%ADcio-d-agostini-5a87542b1/"
                 target="_blank"
+                draggable="false"
               >
                 <div className="appIcon">
                   <svg
@@ -178,7 +179,7 @@ const Home = ({ setOpenedApp }) => {
             </div>
 
             <div className="appWrapper">
-              <a href="https://www.figma.com/@fabriciodagosti" target="_blank">
+              <a href="https://www.figma.com/@fabriciodagosti" target="_blank" draggable="false">
                 <div className="appIcon">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -196,7 +197,7 @@ const Home = ({ setOpenedApp }) => {
             </div>
 
             <div className="appWrapper">
-              <a href="https://github.com/FabricioDag" target="_blank">
+              <a href="https://github.com/FabricioDag" target="_blank" draggable='false'>
                 <div className="appIcon">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -225,23 +226,48 @@ const Home = ({ setOpenedApp }) => {
               <p className="appTitle">SpaceTourism</p>
             </div>
 
-            <div className="appWrapper">
+            <div className="appWrapper" onClick={() => handleClick('Advicegenerator')}>
               <div className="appIcon"></div>
-              <p className="appTitle">To Do List</p>
+              <p className="appTitle">Advices</p>
             </div>
 
             <div className="appWrapper">
-              <div className="appIcon"></div>
+              <div className="appIcon">
+                
+              </div>
               <p className="appTitle">RPS</p>
             </div>
 
-            <div className="appWrapper">
-              <div className="appIcon"></div>
+            <div className="appWrapper" onClick={() => handleClick('Pomodoro')}> 
+              <div className="appIcon">
+                <svg className='icon' width="800px" height="800px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path fill='currentColor' d="M13,2a11.32,11.32,0,0,0-1,2c-.12.33-.22.66-.31,1C11.07,3.26,8.19,3.54,7,3c0,3.38,3.52,2.21,4.25,2.72C8.42,5.48,7.39,7.39,6,8c3.1,1.57,5,.06,5.72-1.84-.11.74-.65,4.92,2.28,4.84a8.14,8.14,0,0,0-1.31-4.91h.06C14,7.59,15.94,9.3,18,8a7.19,7.19,0,0,0-3.75-2.06C15.84,6,16.91,6.13,18,4a8.42,8.42,0,0,0-4.69,1c.47-.8,1.18-2,1.69-3ZM7,5c-3.91.89-5,4.23-5,8C2,18,6.47,22,12,22c4.89,0,10-2.84,10-10,0-3-1.17-6-4-7a1.88,1.88,0,0,1-1,1c.54.19,1.42,1.39,2,2-.31.81-1.8,1.52-4.34,1a9.86,9.86,0,0,1,0,3,4.07,4.07,0,0,1-4-3C8.25,10.5,4.93,8.68,5,8c.88-.61,2-1.83,3-2A2.82,2.82,0,0,1,7,5Z"/>
+                <rect width="24" height="24" fill="none"/>
+                </svg>
+              </div>
               <p className="appTitle">Pomodoro</p>
             </div>
 
             <div className="appWrapper">
-              <div className="appIcon"></div>
+              <div className="appIcon">
+              <svg className='icon' width="800px" height="800px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" id="Slot_x5F_machine" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+                <g fill="currentColor">
+
+                <path d="M464.816,146.452c-0.139,0-0.276,0.021-0.414,0.057H47.598c-0.138-0.036-0.275-0.057-0.414-0.057   c-8.283,0-14.998,64.703-14.998,144.519c0,79.816,6.715,144.52,14.998,144.52h417.633c8.283,0,14.998-64.703,14.998-144.52   C479.814,211.155,473.1,146.452,464.816,146.452z M428.803,237.096v109.465h-96.802V237.096H428.803z M304.775,237.096v109.465   h-96.801V237.096H304.775z M83.947,237.096h96.802v109.465H83.947V237.096z"/>
+
+                <path d="M235.1,277.139c0,0,1.408-5.871,7.748-4.462c6.342,1.409,13.855,0.235,13.855,0.235   c-29.59,33.113-23.014,55.893-23.014,55.893h26.537c-3.172-15.41,0.125-31.555,8.125-45.021   c1.34-2.257,15.359-24.727,15.359-24.727l-8.219-6.106c0,0-3.992,3.288-11.508,3.288s-10.092-3.288-17.842-3.288   c-5.951,0-10.574,2.113-10.574,2.113v-2.113h-7.279v24.188H235.1z"/>
+
+                <path d="M143.258,255.771c-7.515,0-10.092-3.288-17.842-3.288c-5.951,0-10.574,2.113-10.574,2.113v-2.113h-7.279v24.188h6.811   c0,0,1.408-5.871,7.749-4.462s13.856,0.235,13.856,0.235c-29.591,33.112-23.015,55.893-23.015,55.893h26.537   c-3.173-15.41,0.125-31.555,8.125-45.021c1.341-2.257,15.359-24.727,15.359-24.727l-8.22-6.106   C154.766,252.483,150.773,255.771,143.258,255.771z"/>
+
+                <path d="M292.21,134.969l-9.284-45.21c-1.578-7.685-8.89-13.249-17.406-13.249h-8.988h-8.616c-8.518,0-15.829,5.564-17.407,13.249   l-9.283,45.21h11.425H292.21z"/>
+
+                <path d="M361.572,277.139c0,0,1.409-5.871,7.75-4.462s13.855,0.235,13.855,0.235c-29.59,33.113-23.015,55.893-23.015,55.893h26.538   c-3.173-15.41,0.124-31.555,8.125-45.021c1.34-2.257,15.359-24.727,15.359-24.727l-8.221-6.106c0,0-3.992,3.288-11.507,3.288   s-10.092-3.288-17.842-3.288c-5.952,0-10.574,2.113-10.574,2.113v-2.113h-7.28v24.188H361.572z"/>
+
+                </g>
+
+                </svg>
+              </div>
               <p className="appTitle">Loteria</p>
             </div>
 
@@ -251,7 +277,9 @@ const Home = ({ setOpenedApp }) => {
             </div>
 
             <div className="appWrapper">
-              <div className="appIcon"></div>
+              <div className="appIcon">
+              <svg className='icon' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path fill='currentColor' d="M372.2 52c0 20.9-12.4 39-30.2 47.2L448 192l104.4-20.9c-5.3-7.7-8.4-17.1-8.4-27.1c0-26.5 21.5-48 48-48s48 21.5 48 48c0 26-20.6 47.1-46.4 48L481 442.3c-10.3 23-33.2 37.7-58.4 37.7l-205.2 0c-25.2 0-48-14.8-58.4-37.7L46.4 192C20.6 191.1 0 170 0 144c0-26.5 21.5-48 48-48s48 21.5 48 48c0 10.1-3.1 19.4-8.4 27.1L192 192 298.1 99.1c-17.7-8.3-30-26.3-30-47.1c0-28.7 23.3-52 52-52s52 23.3 52 52z"/></svg>
+              </div>
               <p className="appTitle">CodeKingdom</p>
             </div>
             
@@ -320,12 +348,18 @@ const Home = ({ setOpenedApp }) => {
             </div>
 
             <div className="appWrapper">
-              <div className="appIcon"></div>
+              <div className="appIcon">
+                <svg className='icon' width="800px" height="800px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                <path fill="currentColor" d="M15.821 23.185s0-10.361 0.344-10.36c0.266 0 0.612 13.365 0.612 13.365-0.476-0.056-0.956-2.199-0.956-3.005zM22.489 12.945c-0.919-4.016-2.932-7.469-5.708-10.134l-0.007-0.006c-0.338-0.516-0.647-1.108-0.895-1.732l-0.024-0.068c0.001 0.020 0.001 0.044 0.001 0.068 0 0.565-0.253 1.070-0.652 1.409l-0.003 0.002c-3.574 3.034-5.848 7.505-5.923 12.508l-0 0.013c-0.001 0.062-0.001 0.135-0.001 0.208 0 4.957 2.385 9.357 6.070 12.115l0.039 0.028 0.087 0.063q0.241 1.784 0.412 3.576h0.601c0.166-1.491 0.39-2.796 0.683-4.076l-0.046 0.239c0.396-0.275 0.742-0.56 1.065-0.869l-0.003 0.003c2.801-2.597 4.549-6.297 4.549-10.404 0-0.061-0-0.121-0.001-0.182l0 0.009c-0.003-0.981-0.092-1.94-0.261-2.871l0.015 0.099z"></path>
+                </svg>
+              </div>
               <p className="appTitle">MongoDB</p>
             </div>
 
             <div className="appWrapper">
-              <div className="appIcon"></div>
+              <div className="appIcon">
+               
+              </div>
               <p className="appTitle">Postgree</p>
             </div>
 

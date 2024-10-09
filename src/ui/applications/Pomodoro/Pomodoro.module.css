@@ -1,0 +1,128 @@
+:root{
+    --main-red:#f46c70;
+    --bg-actual-timer:#141932;
+    --pomodoro:#cdd2eb;
+    --p-timers:#464b62;
+    --bg-pomodoro:#1e2140;
+    --pomodoro-grad-dark:#111633;
+    --pomodoro-grad-light:#272e52;
+  }
+  
+  .Pomodoro{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    gap: 1rem;
+    border: 3px solid var(--debug-green);
+    background-color: var(--bg-pomodoro);
+  }
+
+  .topPart{
+    border: 2px solid var(--debug-green);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+   
+  h3{
+    color: var(--pomodoro);
+    font-weight: bold;
+  
+  }
+  
+  .actualTimer {
+    display: flex;
+    gap: 1rem;
+  
+    border-radius: 2rem;
+    background-color: var(--bg-actual-timer);
+    padding: 0.3rem;
+  }
+  
+  .actualTimer p {
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    transition: 0.3s ease;
+    border-radius: 2rem;
+    color: var(--p-timers);
+    font-weight: bold;
+    font-size: .9rem;
+  }
+  
+  .actualTimer p:hover {
+    background-color: rgba(255, 0, 0, 0.494);
+  }
+  
+  p.actual {
+    background-color: var(--main-red);
+    color: var(--bg-actual-timer);
+  }
+  
+  .timerWrapper{
+    /* border: 2px solid rgb(0, 255, 51); */
+    border-radius: 50%;
+    padding: 1rem;
+    cursor: pointer;
+
+    background-image: linear-gradient(125deg, var(--pomodoro-grad-dark), var(--pomodoro-grad-light));
+    position: relative;
+  }
+  
+  .circle{
+    /* border: 2px solid blue; */
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+    display: grid;
+    place-content: center;
+  }
+  
+  .timer{
+    border: 2px solid var(--debug-red);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+    position: relative;
+  }
+  
+  .timerValue{
+    font-size: 4rem;
+  }
+  
+  .timerAction{
+    position: absolute;
+    bottom: -40%;
+    left: 50%;
+    transform: translateX(-50%);
+    letter-spacing: .5rem;
+  }
+
+  .nextTimer{
+    /* border: 2px solid green; */
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    display: grid;
+    place-content: center;
+    top: 0;
+    right: -10px;
+    background-color: var(--pomodoro-grad-dark);
+  }
+
+  .configButton{
+    height: 2rem;
+    width: 2rem;
+    border: none;
+    background-color: transparent;
+    color: var(--pomodoro);
+    transition: .2s ease;
+    cursor: pointer;
+  }
+
+  .configButton:hover{
+    filter: drop-shadow(0px 0px 5px var(--pomodoro));
+  }

@@ -106,6 +106,14 @@
   border: 2px solid var(--debug-red);
 }
 
+.homeBtn{
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+
 @keyframes teste {
   0% {
     transform: scale(0%);

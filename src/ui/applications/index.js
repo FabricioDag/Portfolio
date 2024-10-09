@@ -6,3 +6,5 @@ export * from './About';
 export * from './Contact';
 export * from './Calculator';
 export * from './Spacetourism';
+export * from './Advicegenerator'
+export * from './Pomodoro'
